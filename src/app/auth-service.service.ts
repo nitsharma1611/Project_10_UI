@@ -1,4 +1,3 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,5 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class AuthServiceService {
 
-  
+  constructor() { }
 }
