@@ -23,7 +23,6 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -160,4 +159,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
