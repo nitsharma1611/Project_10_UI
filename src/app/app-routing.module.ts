@@ -22,6 +22,8 @@ import { SubjectListComponent } from './subject/subject-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { EmployeeListComponent } from './employee/employee-list.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 const routes: Routes = [
   {
@@ -50,7 +52,7 @@ const routes: Routes = [
     component: UserComponent
   },
   {
-    path: 'userlist',
+    path: 'userList',
     component: UserListComponent
   },
   {
@@ -62,7 +64,7 @@ const routes: Routes = [
     component: RoleComponent
   },
   {
-    path: 'rolelist',
+    path: 'roleList',
     component: RoleListComponent
   },
   {
@@ -74,7 +76,7 @@ const routes: Routes = [
     component: CollegeComponent
   },
   {
-    path: 'collegelist',
+    path: 'collegeList',
     component: CollegeListComponent
   },
   {
@@ -86,7 +88,7 @@ const routes: Routes = [
     component: StudentComponent
   },
   {
-    path: 'studentlist',
+    path: 'studentList',
     component: StudentListComponent
   },
   {
@@ -98,7 +100,7 @@ const routes: Routes = [
     component: MarksheetComponent
   },
   {
-    path: 'marksheetlist',
+    path: 'marksheetList',
     component: MarksheetListComponent
   },
   {
@@ -110,7 +112,7 @@ const routes: Routes = [
     component: CourseComponent
   },
   {
-    path: 'courselist',
+    path: 'courseList',
     component: CourseListComponent
   },
   {
@@ -122,7 +124,7 @@ const routes: Routes = [
     component: SubjectComponent
   },
   {
-    path: 'subjectlist',
+    path: 'subjectList',
     component: SubjectListComponent
   },
   {
@@ -134,7 +136,7 @@ const routes: Routes = [
     component: TimetableComponent
   },
   {
-    path: 'timetablelist',
+    path: 'timetableList',
     component: TimetableListComponent
   },
   {
@@ -146,8 +148,20 @@ const routes: Routes = [
     component: FacultyComponent
   },
   {
-    path: 'facultylist',
+    path: 'facultyList',
     component: FacultyListComponent
+  },
+  {
+    path: 'employee',
+    component: EmployeeComponent
+  },
+  {
+    path: 'employee/:id',
+    component: EmployeeComponent
+  },
+  {
+    path: 'employeeList',
+    component: EmployeeListComponent
   },
   {
     path: 'forgotpassword',

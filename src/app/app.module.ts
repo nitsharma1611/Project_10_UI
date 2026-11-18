@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpServiceService } from './http-service.service';
 import { EndpointServiceService } from './endpoint-service.service';
@@ -35,6 +35,8 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
 
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeListComponent } from './employee/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -65,13 +67,16 @@ import { ForgotpasswordComponent } from './login/forgotpassword.component';
     TimetableListComponent,
     FacultyListComponent,
    
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+         EmployeeComponent,
+         EmployeeListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,  TranslateModule.forRoot()
+    
   ],
   providers: [
     HttpServiceService,

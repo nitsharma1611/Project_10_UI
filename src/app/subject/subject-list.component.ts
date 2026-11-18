@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './subject-list.component.html'
 })
 export class SubjectListComponent extends BaseListCtl   {
-constructor(public locator: ServiceLocatorService, route: ActivatedRoute) {
+constructor(public locator: ServiceLocatorService, route:ActivatedRoute ) {
     super(locator.endpoints.SUBJECT , locator, route);
   }
 }

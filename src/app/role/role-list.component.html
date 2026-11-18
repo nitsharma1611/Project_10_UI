@@ -18,6 +18,15 @@
                         <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">{{obj.value}}</option>
                     </select>&nbsp;
 
+                    <label><b>Role Description: </b></label>
+                    <select name="description" [(ngModel)]="form.searchParams.description" style="width: 165px;">
+                        <option value="undefined">------------Select------------</option>
+                        <option *ngFor="let obj of form.preload.roleList" [value]="obj.key">{{obj.value}}</option>
+                    </select>&nbsp;
+
+
+
+
                     <button (click)="search()">search</button>&nbsp;
                     <button (click)="reset()">reset</button>
                 </td>
