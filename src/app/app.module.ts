@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpServiceService } from './http-service.service';
 import { EndpointServiceService } from './endpoint-service.service';
 import { ServiceLocatorService } from './service-locator.service';
@@ -37,6 +37,9 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
+
+
 
 @NgModule({
   declarations: [
@@ -69,7 +72,9 @@ import { EmployeeListComponent } from './employee/employee-list.component';
    
     ForgotpasswordComponent,
          EmployeeComponent,
-         EmployeeListComponent
+         EmployeeListComponent,
+         MyprofileComponent
+        
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,9 @@ import { EmployeeListComponent } from './employee/employee-list.component';
     
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthServiceService, multi: true
+    },
     HttpServiceService,
     EndpointServiceService,
     ServiceLocatorService,

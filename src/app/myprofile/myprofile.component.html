@@ -1,0 +1,131 @@
+
+<app-navbar></app-navbar>
+
+<div class="container py-4" style="min-height: 80vh;">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card shadow border-0">
+
+                <!-- Header -->
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h3 class="mb-0">My Profile</h3>
+                    <small>Update Your Personal Details</small>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <!-- Message -->
+                    <div *ngIf="form.message"
+                         class="alert text-center"
+                         [ngClass]="form.error ? 'alert-danger' : 'alert-success'">
+                        {{form.message}}
+                    </div>
+
+                    <form #myForm="ngForm" (ngSubmit)="submit()">
+
+                        <div class="row">
+
+                            <!-- First Name -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">First Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="firstName"
+                                       [(ngModel)]="form.data.firstName"
+                                       required>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Last Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="lastName"
+                                       [(ngModel)]="form.data.lastName"
+                                       required>
+                            </div>
+
+                            <!-- Login ID -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Login ID</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="loginId"
+                                       [(ngModel)]="form.data.loginId"
+                                       disabled>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Date of Birth</label>
+                                <input type="date"
+                                       class="form-control"
+                                       name="dob"
+                                       [(ngModel)]="form.data.dob">
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Phone</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="phone"
+                                       [(ngModel)]="form.data.phone">
+                            </div>
+
+                            <!-- Alternate Mobile -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Alternate Mobile</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="alternateMobile"
+                                       [(ngModel)]="form.data.alternateMobile">
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Gender</label>
+                                <select class="form-select"
+                                        name="gender"
+                                        [(ngModel)]="form.data.gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Buttons -->
+                        <div class="text-center">
+
+                            <button type="submit"
+                                    class="btn btn-success px-4 me-2"
+                                    [disabled]="myForm.invalid">
+                                Update Profile
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-secondary px-4"
+                                    (click)="display()">
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

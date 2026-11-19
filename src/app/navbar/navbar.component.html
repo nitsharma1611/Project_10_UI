@@ -13,13 +13,10 @@
     <!-- MENU -->
     <div class="d-flex flex-wrap gap-2">
 
-      <!-- Dashboard -->
-      <a [routerLink]="['/dashboard']" class="btn btn-outline-light btn-sm">
-        {{ 'dashboard' | translate }}
-      </a>
+      
 
       <!-- My Profile -->
-      <a (click)="forward()"  class="btn btn-outline-light btn-sm">
+      <a  [routerLink]="['/myProfile']" class="btn btn-outline-light btn-sm">
           {{ 'MyProfile' | translate }}
       </a>
 
@@ -175,11 +172,7 @@
         {{ 'Login' | translate }}
       </a>
 
-      <select class="form-select form-select-sm" #locale (change)="changeLocale(locale.value)">
-        <option value="0">{{ 'LocaleSelect.Select' | translate }}</option>
-        <option value="en">{{ 'LocaleSelect.English' | translate }}</option>
-        <option value="hi">{{ 'LocaleSelect.Hindi' | translate }}</option>
-      </select>
+      
 
     </div>
 

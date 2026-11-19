@@ -24,6 +24,7 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   },
+
   {
     path: 'login',
     component: LoginComponent
@@ -42,6 +44,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'myProfile',
+    component: MyprofileComponent
   },
   {
     path: 'user',
