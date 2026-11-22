@@ -1,70 +1,136 @@
 <app-navbar></app-navbar>
+<div class="container py-4" style="margin-top:80px;">
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-5 col-sm-10">
 
-<div align="center">
-    <h1 align="center" style="margin-bottom: 5px; color: navy">User Registration</h1>
+      <div class="card border-0 shadow-lg rounded-4"
+           style="backdrop-filter: blur(10px);">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
-    </div>
+        <!-- Header -->
+        <div class="card-header text-center text-white rounded-top-4 py-4 "
+             style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
+          <h3 class="mb-0 fw-bold">User Registration</h3><br>
+          <h6 class="text-primary" fw-bold>"Create your account and unlock new possibilities."</h6>
+        </div>
 
-    <table>
-         <tr>
-            <th align="left">First Name<span style="color: red">*</span></th>
-            <td><input type="text" name="firstName" [(ngModel)]="form.data.firstName" placeholder="Enter First Name"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.firstName}}</td>
-        </tr>
+        <div class="card-body p-4">
+  <!-- Message -->
+<div *ngIf="!form.error && form.message"
+     class="alert alert-success alert-dismissible fade show position-relative">
 
-        <tr>
-            <th align="left">Last Name<span style="color: red">*</span></th>
-            <td><input type="text" name="lastName" [(ngModel)]="form.data.lastName" placeholder="Enter Last Name"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.lastName}}</td>
-        </tr>
+    {{ form.message }}
 
-        <tr>
-            <th align="left">Login Id<span style="color: red">*</span></th>
-            <td><input type="text" name="loginId" [(ngModel)]="form.data.loginId" placeholder="Enter Login ID"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.loginId}}</td>
-        </tr>
+    <button type="button"
+            class="close"
+            (click)="form.message = ''"
+            style="position:absolute; right:15px; top:8px; border:none; background:transparent; font-size:24px;">
+        &times;
+    </button>
 
-        <tr>
-            <th align="left">Password<span style="color: red">*</span></th>
-            <td><input type="password" name="password" [(ngModel)]="form.data.password" placeholder="Enter Password"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.password}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">Date of Birth<span style="color: red">*</span></th>
-            <td><input type="date" name="dob" [(ngModel)]="form.data.dob" placeholder="Select Date of Birth" style="width: 97%;"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.dob}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">Gender<span style="color: red">*</span></th>
-            <td>
-                <select name="gender" [(ngModel)]="form.data.gender" style="width: 170px;">
-                    <option value="undefined">------------Select------------</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-            </td>
-            <td style="position: fixed; color: red;">{{form.inputerror.gender}}</td>
-        </tr>
-
-        <tr>
-            <th align="left">Mobile<span style="color: red">*</span></th>
-            <td><input type="text" name="phone" [(ngModel)]="form.data.phone" maxlength="10" placeholder="Enter Mobile No."></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.phone}}</td>
-        </tr>
-
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="signUp()">Sign Up</button> &nbsp;
-                <button (click)="reset()">Reset</button>
-            </td>
-        </tr>
-    </table>
 </div>
 
+<div *ngIf="form.error && form.message"
+     class="alert alert-danger alert-dismissible fade show position-relative">
+
+    {{ form.message }}
+
+    <button type="button"
+            class="close"
+            (click)="form.message = ''"
+            style="position:absolute; right:15px; top:8px; border:none; background:transparent; font-size:24px;">
+        &times;
+    </button>
+
+</div>
+
+          <!-- Name Row -->
+          <div class="row">
+            <div class="col-6 mb-3">
+              <input class="form-control rounded-3"
+                     placeholder="First Name"
+                     [(ngModel)]="form.data.firstName">
+              <small class="text-danger">{{form.inputerror.firstName}}</small>
+            </div>
+
+            <div class="col-6 mb-3">
+              <input class="form-control rounded-3"
+                     placeholder="Last Name"
+                     [(ngModel)]="form.data.lastName">
+              <small class="text-danger">{{form.inputerror.lastName}}</small>
+            </div>
+          </div>
+
+          <!-- Login -->
+        <div class="mb-3">
+    <input class="form-control rounded-3"
+           placeholder="Login ID"
+           [(ngModel)]="form.data.loginId">
+
+    <small class="text-danger">{{form.inputerror.loginId}}</small>
+</div>
+
+          <!-- Password -->
+          <div class="mb-3">
+    <input type="password"
+           class="form-control rounded-3"
+           placeholder="Password"
+           [(ngModel)]="form.data.password">
+
+    <small class="text-danger">{{form.inputerror.password}}</small>
+</div>
+
+          <!-- DOB & Gender -->
+          <div class="row">
+            <div class="col-6 mb-3">
+              <input type="date"
+                     class="form-control rounded-3"
+                     [(ngModel)]="form.data.dob">
+              <small class="text-danger">{{form.inputerror.dob}}</small>
+            </div>
+
+            <div class="col-6 mb-3">
+              <select class="form-select rounded-3"
+                      [(ngModel)]="form.data.gender">
+                <option value="undefined">------------Select------------</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+              </select>
+              <small class="text-danger">{{form.inputerror.gender}}</small>
+            </div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="mb-3">
+    <input class="form-control rounded-3"
+           maxlength="10"
+           placeholder="Mobile Number"
+           [(ngModel)]="form.data.phone">
+
+    <small class="text-danger">{{form.inputerror.phone}}</small>
+</div>
+
+          <!-- Buttons -->
+         <div class="row mt-3">
+    <div class="col-6">
+        <button class="btn text-white fw-semibold rounded-3 w-100"
+                style="background: linear-gradient(135deg,#13548d,#00f2fe);"
+                (click)="signUp()">
+            Sign Up
+        </button>
+    </div>
+
+    <div class="col-6">
+        <button class="btn btn-outline-success rounded-3 w-100"
+                (click)="reset()">
+            Reset
+        </button>
+    </div>
+</div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>

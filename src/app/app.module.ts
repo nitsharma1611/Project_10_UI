@@ -37,7 +37,14 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
-import { MyprofileComponent } from './myprofile/myprofile.component';
+
+import { GetMarksheetComponent } from './marksheet/get-marksheet.component';
+import { MarksheetMeritListComponent } from './marksheet/marksheet-merit-list.component';
+
+import { ChangePasswordComponent } from './user/change-password.component';
+import { MyprofileComponent } from './user/my-profile.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+
 
 
 
@@ -49,7 +56,7 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
     NavbarComponent,
     DashboardComponent,
     UserComponent,
-    
+    MyprofileComponent,
     RoleComponent,
     StudentComponent,
     FacultyComponent,
@@ -73,7 +80,12 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
     ForgotpasswordComponent,
          EmployeeComponent,
          EmployeeListComponent,
-         MyprofileComponent
+         
+         GetMarksheetComponent,
+         MarksheetMeritListComponent,
+         
+         ChangePasswordComponent,
+                    WelcomeComponent
         
   ],
   imports: [

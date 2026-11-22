@@ -1,48 +1,218 @@
+
 <app-navbar></app-navbar>
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Employee</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Employee</h1>
+<div class="container py-5" style="margin-top: 120px;">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10 col-sm-11">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <!-- Header -->
+                <div class="card-header text-center text-white py-4"
+                     style="background: linear-gradient(90deg,#2952CC,#1DA1F2);">
+
+                    <h2 class="fw-bold mb-1">
+
+                        <i class="bi bi-person-badge-fill"></i>
+
+                        <span *ngIf="!form.data.id">Add Employee</span>
+
+                        <span *ngIf="form.data.id > 0">Update Employee</span>
+
+                    </h2>
+
+                    <small>Enter employee details</small>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <!-- Success Message -->
+                    <div *ngIf="!form.error && form.message"
+                         class="alert alert-success alert-dismissible fade show position-relative">
+
+                        {{ form.message }}
+
+                        <button type="button"
+                                class="close"
+                                (click)="form.message = ''"
+                                style="position:absolute; right:15px; top:8px; border:none; background:transparent; font-size:24px;">
+                            &times;
+                        </button>
+
+                    </div>
+
+                    <!-- Error Message -->
+                    <div *ngIf="form.error && form.message"
+                         class="alert alert-danger alert-dismissible fade show position-relative">
+
+                        {{ form.message }}
+
+                        <button type="button"
+                                class="close"
+                                (click)="form.message = ''"
+                                style="position:absolute; right:15px; top:8px; border:none; background:transparent; font-size:24px;">
+                            &times;
+                        </button>
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Employee Name -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Name <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   name="name"
+                                   [(ngModel)]="form.data.name"
+                                   placeholder="Enter Employee Name">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.name }}
+                            </small>
+
+                        </div>
+
+                        <!-- Department -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Department <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   name="department"
+                                   [(ngModel)]="form.data.department"
+                                   placeholder="Enter Department">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.department }}
+                            </small>
+
+                        </div>
+
+                        <!-- Salary -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Salary <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="number"
+                                   class="form-control"
+                                   name="salary"
+                                   [(ngModel)]="form.data.salary"
+                                   placeholder="Enter Salary">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.salary }}
+                            </small>
+
+                        </div>
+
+                        <!-- Joining Date -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Joining Date <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="date"
+                                   class="form-control"
+                                   name="joiningDate"
+                                   [(ngModel)]="form.data.joiningDate">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.joiningDate }}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Buttons -->
+                    <div class="row">
+
+                        <!-- ADD MODE -->
+                        <ng-container *ngIf="!form.data.id">
+
+                            <div class="col-6">
+
+                                <button class="btn btn-primary w-100 rounded-3"
+                                        (click)="submit()">
+
+                                    <i class="bi bi-save me-1"></i>
+                                    Save
+
+                                </button>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <button class="btn btn-outline-secondary w-100 rounded-3"
+                                        (click)="reset()">
+
+                                    <i class="bi bi-arrow-counterclockwise me-1"></i>
+                                    Reset
+
+                                </button>
+
+                            </div>
+
+                        </ng-container>
+
+                        <!-- EDIT MODE -->
+                        <ng-container *ngIf="form.data.id">
+
+                            <div class="col-6">
+
+                                <button class="btn btn-success w-100 rounded-3"
+                                        (click)="submit()">
+
+                                    <i class="bi bi-pencil-square me-1"></i>
+                                    Update
+
+                                </button>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <button type="button"
+                                        (click)="forward('/employeeList')"
+                                        class="btn btn-outline-secondary w-100 rounded-3">
+
+                                    <i class="bi bi-list-ul me-1"></i>
+                                    List
+
+                                </button>
+
+                            </div>
+
+                        </ng-container>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
-     <table>
-        <tr>
-            <th align="left">Name<span style="color: red">*</span></th>
-            <td align="center"><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter Employee Name"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.name}}</td>
-        </tr>
-
-             <tr>
-            <th align="left">Department<span style="color: red">*</span></th>
-            <td align="center"><input type="text" name="department" [(ngModel)]="form.data.department" placeholder="Enter Department"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.department}}</td>
-        </tr>
- <tr>
-            <th align="left">Salary<span style="color: red">*</span></th>
-            <td align="center"><input type="number" name="salary" [(ngModel)]="form.data.salary" placeholder="Enter Salary"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.salary}}</td>
-        </tr>
- <tr>
-            <th align="left">Joining Date<span style="color: red">*</span></th>
-            <td align="center"><input type="date" name="joiningDate" [(ngModel)]="form.data.joiningDate" ></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.joiningDate}}</td>
-        </tr>
-        
-
-        <tr></tr>
-
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-                <button (click)="forward('/employeeList')">list</button>
-            </td>
-        </tr>
-    </table>
 </div>
 
 <app-footer></app-footer>

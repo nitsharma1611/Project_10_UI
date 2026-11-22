@@ -24,7 +24,12 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
 import { ForgotpasswordComponent } from './login/forgotpassword.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { MyprofileComponent } from './myprofile/myprofile.component';
+import { MyprofileComponent } from './user/my-profile.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ChangePasswordComponent } from './user/change-password.component';
+import { MarksheetMeritListComponent } from './marksheet/marksheet-merit-list.component';
+import { GetMarksheetComponent } from './marksheet/get-marksheet.component';
+
 
 const routes: Routes = [
   {
@@ -45,7 +50,16 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent
   },
+  
   {
+    path: 'forgotpassword',
+    component: ForgotpasswordComponent
+  },
+  {
+    path: 'changePassword',
+    component: ChangePasswordComponent
+  },
+{
     path: 'myProfile',
     component: MyprofileComponent
   },
@@ -106,8 +120,16 @@ const routes: Routes = [
     component: MarksheetComponent
   },
   {
+    path: 'getMarksheet',
+    component: GetMarksheetComponent
+  },
+  {
     path: 'marksheetList',
     component: MarksheetListComponent
+  },
+  {
+    path: 'marksheetMeritList',
+    component: MarksheetMeritListComponent
   },
   {
     path: 'course',
@@ -168,10 +190,13 @@ const routes: Routes = [
   {
     path: 'employeeList',
     component: EmployeeListComponent
-  },
-  {
-    path: 'forgotpassword',
-    component: ForgotpasswordComponent
+  },{
+    path: 'welcome',
+    component: WelcomeComponent
+  }
+  ,{
+    path: 'home',
+    component: WelcomeComponent
   }
 ];
 

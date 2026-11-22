@@ -78,23 +78,42 @@ export class BaseCtl implements OnInit {
         });
     }
 
-    submit() {
-        var _self = this;
-        this.serviceLocator.httpService.post(this.api.save, this.form.data, function (res: any) {
-            _self.form.message = '';
-            _self.form.inputerror = {};
-            if (res.success) {
-                _self.form.message = res.result.message;
-                _self.form.data.id = res.result.data;
-            } else {
-                _self.form.error = true;
-                if (res.result.inputerror) {
-                    _self.form.inputerror = res.result.inputerror;
-                }
-                _self.form.message = res.result.message;
-            }
-        });
-    }
+    submit(callback?: (id: any) => void) {
+    var _self = this;
+  console.log("Save button clicked");
+    this.serviceLocator.httpService.post(this.api.save, this.form.data,function (res: any) {
+        // reset
+        _self.form.message = '';
+        _self.form.inputerror = {};
+        _self.form.error = false;
+
+        if (res.success) {
+          // ✅ success message
+          _self.form.message = res.result.message;
+
+          // ✅ ID set (IMPORTANT)
+          _self.form.data.id = res.result.data;
+
+          // ✅ callback call (for image upload etc.)
+          if (callback) {
+            callback(_self.form.data.id);
+          }
+        } else {
+          // ❌ validation error
+          _self.form.error = true;
+
+          if (res.result.inputerror) {
+            _self.form.inputerror = res.result.inputerror;
+          }
+
+          _self.form.message = res.result.message;
+
+          console.log('Validation Error:', res.result);
+        }
+      },
+    );
+  }
+
 
     search() {
         var _self = this;

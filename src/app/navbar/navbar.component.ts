@@ -30,9 +30,13 @@ constructor(private translate: TranslateService, private httpService: HttpServic
 
     isLogin() {
     let check = localStorage.getItem('fname');
-    if (check != "null" && check != null) {
+    console.log("fname:", localStorage.getItem("fname"));
+console.log("role:", localStorage.getItem("role"));
+console.log("userId:", localStorage.getItem("userId"));
+    if (check && check !== "null" && check.trim() !== "") {
       this.form.data.fname = localStorage.getItem("fname");
       this.form.data.role = localStorage.getItem("role");
+      this.form.data.id = localStorage.getItem("userId");
       return true;
     } else {
       return false;
