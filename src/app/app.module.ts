@@ -52,7 +52,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    
+
     NavbarComponent,
     DashboardComponent,
     UserComponent,
@@ -76,24 +76,24 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SubjectListComponent,
     TimetableListComponent,
     FacultyListComponent,
-   
+
     ForgotpasswordComponent,
-         EmployeeComponent,
-         EmployeeListComponent,
-         
-         GetMarksheetComponent,
-         MarksheetMeritListComponent,
-         
-         ChangePasswordComponent,
-                    WelcomeComponent
-        
+    EmployeeComponent,
+    EmployeeListComponent,
+
+    GetMarksheetComponent,
+    MarksheetMeritListComponent,
+
+    ChangePasswordComponent,
+    WelcomeComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,  TranslateModule.forRoot()
-    
+    FormsModule, TranslateModule.forRoot()
+
   ],
   providers: [
     {

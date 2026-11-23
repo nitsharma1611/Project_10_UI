@@ -45,10 +45,6 @@
           <li><a class="dropdown-item" [routerLink]="['/marksheetList']">{{ 'MarksheetList' | translate }}</a></li>
           <li><a class="dropdown-item" [routerLink]="['/marksheetMeritList']">{{ 'MeritList' | translate }}</a></li>
 
-          <li><hr class="dropdown-divider border-secondary"></li>
-
-          <li><a class="dropdown-item" [routerLink]="['/marksheet']">{{ 'AddMarksheet' | translate }}</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/getMarksheet']">{{ 'GetMarksheet' | translate }}</a></li>
 
         </ul>
       </div>
@@ -62,7 +58,12 @@
 
         <ul class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3">
 
+          <li><h6 class="dropdown-header text-uppercase text-info small">Marksheet</h6></li>
+
+          <li><a class="dropdown-item" [routerLink]="['/marksheet']">{{ 'AddMarksheet' | translate }}</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/getMarksheet']">{{ 'GetMarksheet' | translate }}</a></li>
           <li><h6 class="dropdown-header text-uppercase text-info small">Student</h6></li>
+
           <li><a class="dropdown-item" [routerLink]="['/student']">{{ 'AddStudent' | translate }}</a></li>
           <li><a class="dropdown-item" [routerLink]="['/studentList']">{{ 'StudentList' | translate }}</a></li>
 
@@ -90,9 +91,6 @@
 
         <ul class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3">
 
-          <li><h6 class="dropdown-header text-uppercase text-info small">Student</h6></li>
-          <li><a class="dropdown-item" [routerLink]="['/student']">{{ 'AddStudent' | translate }}</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/studentList']">{{ 'StudentList' | translate }}</a></li>
 
           <li><h6 class="dropdown-header text-uppercase text-info small">Employee</h6></li>
           <li><a class="dropdown-item" [routerLink]="['/employee']">{{ 'AddEmployee' | translate }}</a></li>

@@ -84,7 +84,8 @@
             <div class="col-6 mb-3">
               <input type="date"
                      class="form-control rounded-3"
-                     [(ngModel)]="form.data.dob">
+                     [(ngModel)]="form.data.dob"
+                     [max]="maxDOB">
               <small class="text-danger">{{form.inputerror.dob}}</small>
             </div>
 

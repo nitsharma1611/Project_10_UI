@@ -129,7 +129,11 @@
                             <input type="date"
                                    class="form-control"
                                    name="joiningDate"
-                                   [(ngModel)]="form.data.joiningDate">
+                                   [(ngModel)]="form.data.joiningDate"
+                                   [min]="minJoiningDate"
+                                   [max]="maxJoiningDate"
+                                   required
+                                   >
 
                             <small class="text-danger">
                                 {{ form.inputerror.joiningDate }}

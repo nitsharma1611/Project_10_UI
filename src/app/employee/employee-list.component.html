@@ -87,29 +87,29 @@
 
                 <tbody>
 
-                    <tr *ngFor="let m of form.list; let i = index">
+                    <tr *ngFor="let e of form.list; let i = index">
 
                         <td>
                             <input type="checkbox"
                                    #checkboxes
-                                   [id]="m.id"
+                                   [id]="e.id"
                                    [value]="isMasterSel"
                                    (change)="checklistUpdate()">
                         </td>
 
                         <td>{{ (form.pageNo * 5) + i + 1 }}</td>
 
-                        <td>{{ m.name }}</td>
+                        <td>{{ e.name }}</td>
 
-                        <td>{{ m.department }}</td>
+                        <td>{{ e.department }}</td>
 
-                        <td>{{ m.salary }}</td>
+                        <td>{{ e.salary }}</td>
 
-                        <td>{{ m.joiningDate }}</td>
+                        <td>{{ e.joiningDate| date:'dd-MM-yyyy' }}</td>
 
                         <td>
                             <button class="btn btn-warning btn-sm"
-                                    (click)="forward('/employee/' + m.id)">
+                                    (click)="forward('/employee/' + e.id)">
                                 Edit
                             </button>
                         </td>

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpServiceService } from '../http-service.service';
+import { DaterangeService } from '../daterange.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html'
 })
-export class SignupComponent {
-
+export class SignupComponent implements OnInit{
+maxDOB: string = '';
   endpoint = "http://localhost:8080/Auth/signUp";
 
   form: any = {
@@ -17,8 +18,22 @@ export class SignupComponent {
     inputerror: {},
   };
 
-  constructor(private httpService: HttpServiceService, private router: Router) {
+  constructor(private httpService: HttpServiceService, private router: Router,
+      private dateRangeService: DaterangeService) {
   }
+
+ // DOB Date Range
+  ngOnInit(): void {
+
+ 
+
+    // Minimum 18 Years Age
+    this.maxDOB = this.dateRangeService.getDOBMaxDate();
+
+  }
+
+
+
 
   signUp() {
     var _self = this;
