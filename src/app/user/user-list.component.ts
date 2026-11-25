@@ -10,4 +10,17 @@ import { ServiceLocatorService } from '../service-locator.service';
 export class UserListComponent extends BaseListCtl {        
   constructor(public locator: ServiceLocatorService, route: ActivatedRoute) {
     super(locator.endpoints.USER, locator, route);
-      }}
+      }
+    
+    setDefaultImage(event: Event): void {
+
+  const img = event.target as HTMLImageElement;
+
+  if (!img.src.endsWith('/assets/files/default.jpg')) {
+
+    img.src = 'assets/images/default.jpg';
+
+  }
+}
+    
+    }

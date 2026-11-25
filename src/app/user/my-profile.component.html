@@ -1,5 +1,7 @@
+<div class="form-page">
 <app-navbar></app-navbar>
-<div class="container d-flex justify-content-center py-4" style="margin-top:160px;">
+<main class="form-content">
+<div class="container d-flex justify-content-center py-4">
 
     <div class="card shadow-lg border-0 w-100" style="max-width:700px; border-radius:15px;">
 
@@ -44,16 +46,17 @@
     </button>
 
 </div>
-<!-- Profile Photo -->
 <div class="d-flex align-items-center justify-content-center gap-4 mb-4">
 
     <!-- Profile Image Left -->
     <img
-        [src]="form.data.photo ? form.data.photo : 'assets/images/profile.jpeg'"
-        class="rounded-circle border border-3 shadow"
+        *ngIf="form.data.imageId"
+        [src]="'http://localhost:8080/User/profilePic/' + form.data.id"
+        (error)="setDefaultImage($event)"
+        class="img-thumbnail rounded-circle"
         width="120"
         height="120"
-        style="object-fit: cover;"
+        style="width: 1.5cm; height: 1.5cm; object-fit: cover;"
         alt="Profile Photo">
 
     <!-- Choose File Right -->
@@ -65,11 +68,11 @@
         <input
             type="file"
             class="form-control"
+            accept="image/*"
             style="max-width:300px;">
     </div>
 
-</div>
-            <div class="row">
+</div>            <div class="row">
 
                 <!-- First Name -->
                 <div class="col-md-6 mb-3">
@@ -227,4 +230,8 @@
     </div>
 
 </div>
+
+</div>
+</main>
 <app-footer></app-footer>
+</div>

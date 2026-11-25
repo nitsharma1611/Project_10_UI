@@ -1,6 +1,7 @@
+<div class="list-page">
 <app-navbar></app-navbar>
 
-<div class="container py-4" style="margin-top: 130px;">
+<div class="container py-4 list-content">
 
     <!-- Heading -->
     <div class="text-center mb-4">
@@ -19,7 +20,7 @@
     </div>
 
     <!-- Search Panel -->
-       <div *ngIf="form.list.length > 0" class="table-responsive">
+       <div *ngIf="form.list.length > 0">
     <div class="row justify-content-center mb-4 g-2">
 
         <div class="col-lg-3 col-md-6">
@@ -108,8 +109,12 @@
                     </td>
 
                     <td>{{(form.pageNo*5)+i+1}}</td>
-               <td>   <img *ngIf="m.imageId" [src]="'http://localhost:8080/User/profilePic/' + m.id"
-                            ng     class="img-thumbnail" style="width: 1.5cm; height: 1.5cm; object-fit: cover;">
+               <td>
+    <img [src]="'http://localhost:8080/User/profilePic/' + m.id"
+         (error)="setDefaultImage($event)"
+         class="img-thumbnail rounded-circle"
+         style="width: 1.5cm; height: 1.5cm; object-fit: cover;"
+         alt="Profile Image">
 </td>
                     <td>{{m.firstName}}</td>
                     <td>{{m.lastName}}</td>
@@ -136,9 +141,9 @@
     </div>
 
     <!-- Bottom Buttons -->
-    <div class="row mt-4 g-3">
+    <div class="row mt-4 g-3 list-actions">
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-outline-secondary w-100"
                     (click)="previous()"
                     [disabled]="form.pageNo==0">
@@ -146,21 +151,21 @@
             </button>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-success w-100"
                     (click)="forward('/user')">
                 New
             </button>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-danger w-100"
                     (click)="deleteMany()">
                 Delete
             </button>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-outline-primary w-100"
                     (click)="next()"
                     [disabled]="form.nextListSize==0">
@@ -175,4 +180,6 @@
   <div *ngIf="form.list.length == 0" class="text-center mt-4">
     <button class="btn btn-secondary" (click)="reset()">Back</button>
   </div>
+</div>
 <app-footer></app-footer>
+</div>

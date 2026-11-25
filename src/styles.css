@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* Shared responsive layout for list pages only. */
+.list-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.list-page > app-navbar {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+.list-page > app-navbar .fixed-top {
+  position: static;
+}
+.list-page > .list-content {
+  flex: 1 0 auto;
+  min-width: 0;
+}
+.list-page > app-footer {
+  display: block;
+  margin-top: auto;
+}
+.list-page > app-footer .fixed-bottom {
+  position: static;
+}
+.list-page .list-actions {
+  margin-bottom: 1rem;
+}
+.list-page .table-responsive {
+  overflow-x: auto;
+}
+@media (max-width: 767.98px) {
+  .list-page > app-navbar { position: static; }
+}
+
+/* Shared layout for non-list pages: footer stays in document flow. */
+.form-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.form-page > app-navbar {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+.form-page > app-navbar .fixed-top { position: static; }
+.form-page > .form-content { flex: 1 0 auto; min-width: 0; padding-bottom: 1rem; }
+.form-page > .form-content-centered { display: flex; flex-direction: column; justify-content: center; }
+.form-page > app-footer { display: block; margin-top: auto; }
+.form-page > app-footer .fixed-bottom { position: static; }
+@media (max-width: 767.98px) {
+  .form-page > app-navbar { position: static; }
+}

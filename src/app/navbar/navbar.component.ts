@@ -42,7 +42,16 @@ console.log("userId:", localStorage.getItem("userId"));
       return false;
     }
   }
+setDefaultImage(event: Event): void {
 
+  const img = event.target as HTMLImageElement;
+
+  if (!img.src.endsWith('/assets/files/default.jpg')) {
+
+    img.src = 'assets/files/default.jpg';
+
+  }
+}
 
    logout() { 
     var _self = this;

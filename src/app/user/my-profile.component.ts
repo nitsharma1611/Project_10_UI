@@ -105,4 +105,15 @@ export class MyprofileComponent extends BaseCtl implements OnInit {
       }
     );
   }
+setDefaultImage(event: Event): void {
+
+  const img = event.target as HTMLImageElement;
+
+  if (!img.src.endsWith('/assets/files/default.jpg')) {
+
+    img.src = 'assets/images/default.jpg';
+
+  }
+}
+
 }

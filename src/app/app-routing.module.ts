@@ -34,7 +34,7 @@ import { GetMarksheetComponent } from './marksheet/get-marksheet.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    pathMatch: 'prefix',
     redirectTo: 'dashboard'
   },
   {

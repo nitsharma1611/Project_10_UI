@@ -1,6 +1,7 @@
+<div class="list-page">
 <app-navbar></app-navbar>
 
-<div class="container py-4" style="margin-top: 130px;">
+<div class="container py-4 list-content">
 
     <!-- Heading -->
     <div class="text-center mb-4">
@@ -104,10 +105,10 @@
     </div>
 
     <!-- Bottom Buttons -->
-    <div class="row mt-4 g-3"
+    <div class="row mt-4 g-3 list-actions"
          *ngIf="form.list.length>0">
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-outline-secondary w-100"
                     (click)="previous()"
                     [disabled]="form.pageNo==0">
@@ -115,21 +116,21 @@
             </button>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-success w-100"
                     (click)="forward('/role')">
                 New
             </button>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-danger w-100"
                     (click)="deleteMany()">
                 Delete
             </button>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-6 col-lg-3">
             <button class="btn btn-outline-primary w-100"
                     (click)="next()"
                     [disabled]="form.nextListSize==0">
@@ -153,3 +154,4 @@
 </div>
 
 <app-footer></app-footer>
+</div>
