@@ -29,6 +29,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ChangePasswordComponent } from './user/change-password.component';
 import { MarksheetMeritListComponent } from './marksheet/marksheet-merit-list.component';
 import { GetMarksheetComponent } from './marksheet/get-marksheet.component';
+import { LibraryListComponent } from './library/library-list.component';
+import { LibraryComponent } from './library/library.component';
 
 
 const routes: Routes = [
@@ -190,7 +192,20 @@ const routes: Routes = [
   {
     path: 'employeeList',
     component: EmployeeListComponent
-  },{
+  },
+  {
+    path: 'library',
+    component: LibraryComponent
+  },
+  {
+    path: 'library/:id',
+    component: LibraryComponent
+  },
+  {
+    path: 'libraryList',
+    component: LibraryListComponent
+  },
+  {
     path: 'welcome',
     component: WelcomeComponent
   }

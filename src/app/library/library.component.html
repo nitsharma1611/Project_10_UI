@@ -1,0 +1,234 @@
+<app-navbar></app-navbar>
+<div class="form-page">
+
+<main class="form-content">
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8 col-md-10 col-sm-11">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <!-- Header -->
+                <div class="card-header text-center text-white py-4"
+                     style="background: linear-gradient(90deg,#2952CC,#1DA1F2);">
+
+                    <h2 class="fw-bold mb-1">
+
+                        <i class="bi bi-book-fill"></i>
+
+                        <span *ngIf="!form.data.id">Add Library</span>
+
+                        <span *ngIf="form.data.id > 0">Update Library</span>
+
+                    </h2>
+
+                    <small>Enter library details</small>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <!-- Success Message -->
+                    <div *ngIf="!form.error && form.message"
+                         class="alert alert-success alert-dismissible fade show position-relative">
+
+                        {{ form.message }}
+
+                        <button type="button"
+                                class="close"
+                                (click)="form.message = ''"
+                                style="position:absolute; right:15px; top:8px; border:none; background:transparent; font-size:24px;">
+                            &times;
+                        </button>
+
+                    </div>
+
+                    <!-- Error Message -->
+                    <div *ngIf="form.error && form.message"
+                         class="alert alert-danger alert-dismissible fade show position-relative">
+
+                        {{ form.message }}
+
+                        <button type="button"
+                                class="close"
+                                (click)="form.message = ''"
+                                style="position:absolute; right:15px; top:8px; border:none; background:transparent; font-size:24px;">
+                            &times;
+                        </button>
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Title -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Title <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   name="title"
+                                   [(ngModel)]="form.data.title"
+                                   placeholder="Enter Book Title">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.title }}
+                            </small>
+
+                        </div>
+
+                        <!-- Author -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Author <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   name="author"
+                                   [(ngModel)]="form.data.author"
+                                   placeholder="Enter Author">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.author }}
+                            </small>
+
+                        </div>
+
+                        <!-- Price -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Price <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="number"
+                                   class="form-control"
+                                   name="price"
+                                   [(ngModel)]="form.data.price"
+                                   placeholder="Enter Price">
+
+                            <small class="text-danger">
+                                {{ form.inputerror.price }}
+                            </small>
+
+                        </div>
+
+                        <!-- Availability -->
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Availability <span class="text-danger">*</span>
+                            </label>
+
+                            <select class="form-select"
+                                    name="availabilty"
+                                    [(ngModel)]="form.data.availabilty"
+                                    required>
+
+                                <option [ngValue]="null">
+                                    Select Availability
+                                </option>
+
+                                <option [ngValue]="true">
+                                    Available
+                                </option>
+
+                                <option [ngValue]="false">
+                                    Not Available
+                                </option>
+
+                            </select>
+
+                            <small class="text-danger">
+                                {{ form.inputerror.availabilty }}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Buttons -->
+                    <div class="row">
+
+                        <!-- ADD MODE -->
+                        <ng-container *ngIf="!form.data.id">
+
+                            <div class="col-6">
+
+                                <button class="btn btn-primary w-100 rounded-3"
+                                        (click)="submit()">
+
+                                    <i class="bi bi-save me-1"></i>
+                                    Save
+
+                                </button>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <button class="btn btn-outline-secondary w-100 rounded-3"
+                                        (click)="reset()">
+
+                                    <i class="bi bi-arrow-counterclockwise me-1"></i>
+                                    Reset
+
+                                </button>
+
+                            </div>
+
+                        </ng-container>
+
+                        <!-- EDIT MODE -->
+                        <ng-container *ngIf="form.data.id">
+
+                            <div class="col-6">
+
+                                <button class="btn btn-success w-100 rounded-3"
+                                        (click)="submit()">
+
+                                    <i class="bi bi-pencil-square me-1"></i>
+                                    Update
+
+                                </button>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <button type="button"
+                                        (click)="forward('/libraryList')"
+                                        class="btn btn-outline-secondary w-100 rounded-3">
+
+                                    <i class="bi bi-list-ul me-1"></i>
+                                    List
+
+                                </button>
+
+                            </div>
+
+                        </ng-container>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</main>
+</div>
+<app-footer></app-footer>

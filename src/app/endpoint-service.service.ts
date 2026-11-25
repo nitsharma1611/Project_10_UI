@@ -18,4 +18,5 @@ export class EndpointServiceService {
   public TIMETABLE = this.SERVER_URL + "/TimeTable";
   public FACULTY = this.SERVER_URL + "/Faculty";
    public EMPLOYEE = this.SERVER_URL + "/Employee";
+   public LIBRARY = this.SERVER_URL + "/Library";
 }

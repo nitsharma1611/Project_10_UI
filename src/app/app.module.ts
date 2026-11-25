@@ -44,29 +44,43 @@ import { MarksheetMeritListComponent } from './marksheet/marksheet-merit-list.co
 import { ChangePasswordComponent } from './user/change-password.component';
 import { MyprofileComponent } from './user/my-profile.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LibraryComponent } from './library/library.component';
+import { LibraryListComponent } from './library/library-list.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
 
+  
+    // Root and layout components
+    AppComponent,
     NavbarComponent,
+    FooterComponent,
     DashboardComponent,
-    UserComponent,
+    WelcomeComponent,
+
+    // Authentication and user profile components
+    LoginComponent,
+    SignupComponent,
+    ForgotpasswordComponent,
     MyprofileComponent,
-    RoleComponent,
-    StudentComponent,
-    FacultyComponent,
+    ChangePasswordComponent,
+
+    // Entity management components
+    CollegeComponent,
     CourseComponent,
     SubjectComponent,
-    MarksheetComponent,
-    CollegeComponent,
     TimetableComponent,
-    FooterComponent,
-    SignupComponent,
+    MarksheetComponent,
+    StudentComponent,
+    FacultyComponent,
+    UserComponent,
+    RoleComponent,
+    EmployeeComponent,
+
+    // List components
     RoleListComponent,
     UserListComponent,
     CollegeListComponent,
@@ -76,23 +90,20 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SubjectListComponent,
     TimetableListComponent,
     FacultyListComponent,
-
-    ForgotpasswordComponent,
-    EmployeeComponent,
     EmployeeListComponent,
 
+    // Marksheet-related components
     GetMarksheetComponent,
     MarksheetMeritListComponent,
-
-    ChangePasswordComponent,
-    WelcomeComponent
-
+    LibraryComponent,
+    LibraryListComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule, TranslateModule.forRoot()
+     BrowserModule,             // Browser support
+    AppRoutingModule,          // Application routing
+    HttpClientModule,          // HTTP communication with backend
+    FormsModule,               // Template-driven forms
+    TranslateModule.forRoot()  // Language translation support
 
   ],
   providers: [

@@ -1,0 +1,179 @@
+<div class="list-page">
+
+<app-navbar></app-navbar>
+
+<div class="container py-4 list-content">
+
+    <!-- Heading -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">Library List</h1>
+    </div>
+
+    <!-- Messages -->
+    <div class="text-center mb-3" style="min-height: 30px;">
+
+        <h5 class="text-success" *ngIf="!form.error && form.message">
+            {{ form.message }}
+        </h5>
+
+        <h5 class="text-danger" *ngIf="form.error && form.message">
+            {{ form.message }}
+        </h5>
+
+    </div>
+
+    <!-- Library List -->
+    <div *ngIf="form.list.length > 0">
+
+        <!-- Search -->
+        <div class="row justify-content-center align-items-center g-2 mb-4">
+
+            <div class="col-lg-3 col-md-5">
+                <input type="text"
+                       name="title"
+                       class="form-control"
+                       placeholder="Enter Title"
+                       [(ngModel)]="form.searchParams.title">
+            </div>
+
+            <div class="col-lg-3 col-md-5">
+                <input type="text"
+                       name="Author"
+                       class="form-control"
+                       placeholder="Enter Author"
+                       [(ngModel)]="form.searchParams.author">
+            </div>
+
+            <div class="col-auto">
+                <button class="btn btn-primary"
+                        (click)="search()">
+                    Search
+                </button>
+            </div>
+
+            <div class="col-auto">
+                <button class="btn btn-secondary"
+                        (click)="reset()">
+                    Reset
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Employee Table -->
+        <div class="table-responsive shadow-sm rounded">
+
+            <table class="table table-bordered table-hover align-middle text-center mb-0">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th width="50">
+                            <input type="checkbox"
+                                   [(ngModel)]="isMasterSel"
+                                   (change)="checkUncheckAll($event)">
+                        </th>
+
+                        <th>S.No</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                        
+                        <th>Edit</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let l of form.list; let i = index">
+
+                        <td>
+                            <input type="checkbox"
+                                   #checkboxes
+                                   [id]="l.id"
+                                   [value]="isMasterSel"
+                                   (change)="checklistUpdate()">
+                        </td>
+
+                        <td>{{ (form.pageNo * 5) + i + 1 }}</td>
+
+                        <td>{{ l.title }}</td>
+
+                        <td>{{ l.author }}</td>
+
+                        <td>{{ l.price           }}</td>
+
+                        <td>
+    <span [ngClass]="l.availabilty ? 'text-success' : 'text-danger'">
+        {{ l.availabilty ? 'Available' : 'Not Available' }}
+    </span>
+</td>
+
+                        <td>
+                            <button class="btn btn-warning btn-sm"
+                                    (click)="forward('/library/' + l.id)">
+                                Edit
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <!-- Bottom Buttons -->
+        <div class="row mt-4 g-3 list-actions">
+
+            <div class="col-6 col-lg-3">
+                <button class="btn btn-outline-secondary w-100"
+                        (click)="previous()"
+                        [disabled]="form.pageNo == 0">
+                    Previous
+                </button>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <button class="btn btn-success w-100"
+                        (click)="forward('/library')">
+                    New
+                </button>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <button class="btn btn-danger w-100"
+                        (click)="deleteMany()">
+                    Delete
+                </button>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <button class="btn btn-outline-primary w-100"
+                        (click)="next()"
+                        [disabled]="form.nextListSize == 0">
+                    Next
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-4" *ngIf="form.list.length == 0">
+
+        <button class="btn btn-secondary"
+                (click)="reset()">
+            Back
+        </button>
+
+    </div>
+
+</div>
+</div>
+<app-footer></app-footer>
