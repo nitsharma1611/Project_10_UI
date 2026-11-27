@@ -10,8 +10,6 @@ import { DaterangeService } from '../daterange.service';
   templateUrl: './user.component.html',
 })
 export class UserComponent extends BaseCtl {
-  fileToUpload: File | null = null;
-  imagePreview: any = null;
 maxDOB:String ='';
 
 
@@ -30,80 +28,15 @@ override ngOnInit(): void {
     // Parent BaseCtl initialization
     super.ngOnInit();
 
-    // Joining Date range
+    // DOB Range
 this.maxDOB= this.daterangeService.getDOBMaxDate();
 
 
   }
 
-
-
-  // 📁 FILE SELECT + PREVIEW
-  onFileSelect(files: FileList | null) {
-    if (!files || files.length === 0) {
-      console.log('No file selected');
-      return;
-    }
-
-    this.fileToUpload = files.item(0);
-
-    // Preview
-    if (this.fileToUpload) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imagePreview = e.target.result;
-      };
-      reader.readAsDataURL(this.fileToUpload);
-    }
-
-    console.log( 'file === ', this.fileToUpload);
-  }
-
-  onUpload() {
-    this.submit((id: any) => {
-      if (id) {
-        this.myFile();
-      }
-    });
-  }
-  // 📤 IMAGE UPLOAD METHOD
-  myFile() {
-    if (!this.fileToUpload) {
-      console.log('No file selected');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', this.fileToUpload);
-
-    this.httpClient
-      .post(
-        'http://localhost:8080/User/profilePic/' + this.form.data.id,
-        formData,
-      )
-      .subscribe(
-        (data: any) => {
-          console.log('Upload Success:', data);
-        },
-        (error: any) => {
-          console.log('Upload Error:', error);
-        },
-      );
-  }
-
-setDefaultImage(event: Event): void {
-
-  const img = event.target as HTMLImageElement;
-
-  if (!img.src.endsWith('/assets/files/default.jpg')) {
-
-    img.src = 'assets/images/default.jpg';
-
-  }
 }
 
 
 
 
 
-}

@@ -11,6 +11,7 @@ import { DaterangeService } from '../daterange.service';
 })
 export class MyprofileComponent extends BaseCtl implements OnInit {
   maxDOB: String = '';
+
   constructor(
     public locator: ServiceLocatorService,
     route: ActivatedRoute, private daterangeService: DaterangeService
