@@ -1,242 +1,523 @@
 <div class="form-page">
-<app-navbar></app-navbar>
-<main class="form-content">
-<div class="container-fluid px-4 py-4"   style="max-width: 1100px; ">
 
-  <div class="row g-4">
+  <app-navbar></app-navbar>
 
-    <!-- ================= STUDENT CARDS ================= -->
+  <main class="form-content">
 
-    <ng-container *ngIf="isStudent">
+    <div class="container-fluid px-4 py-4"
+         style="max-width: 1100px;">
 
-      <!-- My Marksheet -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/studentList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-file-earmark-text-fill fs-1 text-primary"></i>
-              <h6 class="mt-3 fw-bold">My Marksheet</h6>
-              <p class="text-muted small mb-0">View your academic results</p>
-            </div>
+      <div class="row g-4">
+
+
+        <!-- ================= ADMIN CARDS ================= -->
+
+        <ng-container *ngIf="isAdmin">
+
+          <!-- Users -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/userList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-people-fill fs-1 text-primary"></i>
+                  <h6 class="mt-3 fw-bold">Users</h6>
+                  <p class="text-muted small mb-0">Manage system users</p>
+
+                </div>
+              </div>
+
+            </a>
           </div>
-        </a>
+
+          <!-- Colleges -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/collegeList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-bank2 fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">Colleges</h6>
+                  <p class="text-muted small mb-0">Manage college records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Students -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/studentList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-mortarboard-fill fs-1 text-info"></i>
+                  <h6 class="mt-3 fw-bold">Students</h6>
+                  <p class="text-muted small mb-0">Manage student records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Marksheets -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/marksheetList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-file-earmark-text-fill fs-1 text-warning"></i>
+                  <h6 class="mt-3 fw-bold">Marksheets</h6>
+                  <p class="text-muted small mb-0">Manage marksheet records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Roles -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/roleList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-shield-fill-check fs-1 text-danger"></i>
+                  <h6 class="mt-3 fw-bold">Roles</h6>
+                  <p class="text-muted small mb-0">Manage user roles</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Merit List -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/marksheetMeritList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-trophy-fill fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">Merit List</h6>
+                  <p class="text-muted small mb-0">View merit rankings</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Employees -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/employeeList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-badge-fill fs-1 text-primary"></i>
+                  <h6 class="mt-3 fw-bold">Employees</h6>
+                  <p class="text-muted small mb-0">Manage employee records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Faculty -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/facultyList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-badge-fill fs-1 text-info"></i>
+                  <h6 class="mt-3 fw-bold">Faculty</h6>
+                  <p class="text-muted small mb-0">Manage faculty records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+        </ng-container>
+
+
+        <!-- ================= STUDENT CARDS ================= -->
+
+        <ng-container *ngIf="isStudent">
+
+          <!-- My Marksheet -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/getMarksheet']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-file-earmark-text-fill fs-1 text-primary"></i>
+                  <h6 class="mt-3 fw-bold">My Marksheet</h6>
+                  <p class="text-muted small mb-0">View your academic results</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+          <!-- Students -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/studentList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-mortarboard-fill fs-1 text-info"></i>
+                  <h6 class="mt-3 fw-bold">Students</h6>
+                  <p class="text-muted small mb-0">Manage student records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+
+          <!-- My Profile -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/myProfile']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-circle fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">My Profile</h6>
+                  <p class="text-muted small mb-0">View and edit your details</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Change Password -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/changePassword']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-key-fill fs-1 text-warning"></i>
+                  <h6 class="mt-3 fw-bold">Change Password</h6>
+                  <p class="text-muted small mb-0">Update your login password</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Merit List -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/marksheet/merit-list']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-trophy-fill fs-1 text-danger"></i>
+                  <h6 class="mt-3 fw-bold">Merit List</h6>
+                  <p class="text-muted small mb-0">View class rankings</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+        </ng-container>
+
+
+        <!-- ================= COLLEGE CARDS ================= -->
+
+        <ng-container *ngIf="isCollege">
+
+          <!-- Students -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/studentList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-mortarboard-fill fs-1 text-primary"></i>
+                  <h6 class="mt-3 fw-bold">Students</h6>
+                  <p class="text-muted small mb-0">Manage college students</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Faculty -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/facultyList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-badge-fill fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">Faculty</h6>
+                  <p class="text-muted small mb-0">Manage faculty records</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Courses -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/courseList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-book-fill fs-1 text-warning"></i>
+                  <h6 class="mt-3 fw-bold">Courses</h6>
+                  <p class="text-muted small mb-0">Manage college courses</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Subjects -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/subjectList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-journal-bookmark-fill fs-1 text-info"></i>
+                  <h6 class="mt-3 fw-bold">Subjects</h6>
+                  <p class="text-muted small mb-0">Manage course subjects</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- My Profile -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/myProfile']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-circle fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">My Profile</h6>
+                  <p class="text-muted small mb-0">View and edit your details</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Change Password -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/changePassword']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-key-fill fs-1 text-danger"></i>
+                  <h6 class="mt-3 fw-bold">Change Password</h6>
+                  <p class="text-muted small mb-0">Update your login password</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+        </ng-container>
+
+
+        <!-- ================= KIOSK CARDS ================= -->
+
+        <ng-container *ngIf="isKiosk">
+
+          <!-- Get Marksheet -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/marksheet/get']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-search fs-1 text-primary"></i>
+                  <h6 class="mt-3 fw-bold">Get Marksheet</h6>
+                  <p class="text-muted small mb-0">Search student marksheet</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Merit List -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/marksheetMeritList']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-trophy-fill fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">Merit List</h6>
+                  <p class="text-muted small mb-0">View merit rankings</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- My Profile -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/myProfile']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-circle fs-1 text-info"></i>
+                  <h6 class="mt-3 fw-bold">My Profile</h6>
+                  <p class="text-muted small mb-0">View and edit your details</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Change Password -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a [routerLink]="['/changePassword']"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-key-fill fs-1 text-warning"></i>
+                  <h6 class="mt-3 fw-bold">Change Password</h6>
+                  <p class="text-muted small mb-0">Update your login password</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+        </ng-container>
+
+
+        <!-- ================= GUEST CARDS ================= -->
+
+        <ng-container *ngIf="!isLoggedIn">
+
+          <!-- Login -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a routerLink="/login"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-box-arrow-in-right fs-1 text-primary"></i>
+                  <h6 class="mt-3 fw-bold">Login</h6>
+                  <p class="text-muted small mb-0">Sign in to your account</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Register -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a routerLink="/signup"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-person-plus-fill fs-1 text-success"></i>
+                  <h6 class="mt-3 fw-bold">Register</h6>
+                  <p class="text-muted small mb-0">Create a new account</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Get Marksheet -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <a routerLink="/marksheet/get"
+               class="text-decoration-none text-dark d-block h-100">
+
+              <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
+                <div class="card-body p-4">
+
+                  <i class="bi bi-search fs-1 text-info"></i>
+                  <h6 class="mt-3 fw-bold">Get Marksheet</h6>
+                  <p class="text-muted small mb-0">Search for a marksheet</p>
+
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+        </ng-container>
+
       </div>
 
-      <!-- My Profile -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/myProfile']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-person-circle fs-1 text-success"></i>
-              <h6 class="mt-3 fw-bold">My Profile</h6>
-              <p class="text-muted small mb-0">View and edit your details</p>
-            </div>
-          </div>
-        </a>
-      </div>
+    </div>
 
-      <!-- Change Password -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/changePassword']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-key-fill fs-1 text-warning"></i>
-              <h6 class="mt-3 fw-bold">Change Password</h6>
-              <p class="text-muted small mb-0">Update your login password</p>
-            </div>
-          </div>
-        </a>
-      </div>
+  </main>
 
-      <!-- Merit List -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/marksheet/merit-list']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-trophy-fill fs-1 text-danger"></i>
-              <h6 class="mt-3 fw-bold">Merit List</h6>
-              <p class="text-muted small mb-0">View class rankings</p>
-            </div>
-          </div>
-        </a>
-      </div>
+  <app-footer></app-footer>
 
-    </ng-container>
-
-
-    <!-- ================= ADMIN CARDS ================= -->
-
-    <ng-container *ngIf="isAdmin">
-
-      <!-- Users -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/userList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-people-fill fs-1 text-primary"></i>
-              <h6 class="mt-3 fw-bold">Users</h6>
-              <p class="text-muted small mb-0">Manage system users</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Colleges -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/collegeList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-bank2 fs-1 text-success"></i>
-              <h6 class="mt-3 fw-bold">Colleges</h6>
-              <p class="text-muted small mb-0">Manage college records</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Students -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/studentList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-mortarboard-fill fs-1 text-info"></i>
-              <h6 class="mt-3 fw-bold">Students</h6>
-              <p class="text-muted small mb-0">Manage student records</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Marksheets -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/marksheetList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-file-earmark-text-fill fs-1 text-warning"></i>
-              <h6 class="mt-3 fw-bold">Marksheets</h6>
-              <p class="text-muted small mb-0">Manage marksheet records</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Roles -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/roleList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-shield-fill-check fs-1 text-danger"></i>
-              <h6 class="mt-3 fw-bold">Roles</h6>
-              <p class="text-muted small mb-0">Manage user roles</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Merit List -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/marksheetMeritList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-trophy-fill fs-1 text-success"></i>
-              <h6 class="mt-3 fw-bold">Merit List</h6>
-              <p class="text-muted small mb-0">View merit rankings</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Employees -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/employeeList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-person-badge-fill fs-1 text-primary"></i>
-              <h6 class="mt-3 fw-bold">Employees</h6>
-              <p class="text-muted small mb-0">Manage employee records</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Faculty -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a [routerLink]="['/facultyList']"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-person-badge-fill fs-1 text-info"></i>
-              <h6 class="mt-3 fw-bold">Faculty</h6>
-              <p class="text-muted small mb-0">Manage faculty records</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-    </ng-container>
-
-
-    <!-- ================= GUEST CARDS ================= -->
-
-    <ng-container *ngIf="!isLoggedIn">
-
-      <!-- Login -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a routerLink="/login"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-box-arrow-in-right fs-1 text-primary"></i>
-              <h6 class="mt-3 fw-bold">Login</h6>
-              <p class="text-muted small mb-0">Sign in to your account</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Register -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a routerLink="/signup"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-person-plus-fill fs-1 text-success"></i>
-              <h6 class="mt-3 fw-bold">Register</h6>
-              <p class="text-muted small mb-0">Create a new account</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Get Marksheet -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <a routerLink="/marksheet/get"
-           class="text-decoration-none text-dark d-block h-100">
-          <div class="card shadow-sm border-0 rounded-3 h-100 text-center">
-            <div class="card-body p-4">
-              <i class="bi bi-search fs-1 text-info"></i>
-              <h6 class="mt-3 fw-bold">Get Marksheet</h6>
-              <p class="text-muted small mb-0">Search for a marksheet</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-    </ng-container>
-
-  </div>
-</div>
-</main>
-<app-footer></app-footer>
 </div>

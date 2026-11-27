@@ -3,21 +3,26 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseCtl } from '../base.component';
 import { ServiceLocatorService } from '../service-locator.service';
+import { DaterangeService } from '../daterange.service';
 
 @Component({
   selector: 'app-myProfile',
   templateUrl: './my-profile.component.html',
 })
 export class MyprofileComponent extends BaseCtl implements OnInit {
-
+  maxDOB: String = '';
   constructor(
     public locator: ServiceLocatorService,
-    route: ActivatedRoute,
+    route: ActivatedRoute, private daterangeService: DaterangeService
   ) {
     super(locator.endpoints.USER, locator, route);
   }
 
   override ngOnInit(): void {
+super.ngOnInit();
+    this.maxDOB = this.daterangeService.getDOBMaxDate();
+
+
 
     // Call preload from BaseCtl
     this.preload();
@@ -31,6 +36,7 @@ export class MyprofileComponent extends BaseCtl implements OnInit {
 
       // Get logged-in user details
       this.display();
+      
 
     } else {
 
@@ -54,14 +60,14 @@ export class MyprofileComponent extends BaseCtl implements OnInit {
 
           _self.form.data = res.result.data;
 
- if (_self.form.data.dob) {
+          if (_self.form.data.dob) {
 
-          _self.form.data.dob =
-            new Date(_self.form.data.dob)
-              .toISOString()
-              .split('T')[0];
+            _self.form.data.dob =
+              new Date(_self.form.data.dob)
+                .toISOString()
+                .split('T')[0];
 
-        }
+          }
 
 
         } else {
@@ -90,6 +96,7 @@ export class MyprofileComponent extends BaseCtl implements OnInit {
         if (res.success) {
 
           _self.form.message = res.result.message;
+          _self.form.data.id = res.result.data;
           _self.display();
 
         } else {
@@ -105,15 +112,15 @@ export class MyprofileComponent extends BaseCtl implements OnInit {
       }
     );
   }
-setDefaultImage(event: Event): void {
+  setDefaultImage(event: Event): void {
 
-  const img = event.target as HTMLImageElement;
+    const img = event.target as HTMLImageElement;
 
-  if (!img.src.endsWith('/assets/files/default.jpg')) {
+    if (!img.src.endsWith('/assets/files/default.jpg')) {
 
-    img.src = 'assets/images/default.jpg';
+      img.src = 'assets/images/default.jpg';
 
+    }
   }
-}
 
 }

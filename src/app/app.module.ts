@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpServiceService } from './http-service.service';
 import { EndpointServiceService } from './endpoint-service.service';
@@ -46,8 +46,11 @@ import { MyprofileComponent } from './user/my-profile.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LibraryComponent } from './library/library.component';
 import { LibraryListComponent } from './library/library-list.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 
 @NgModule({
@@ -102,9 +105,16 @@ import { LibraryListComponent } from './library/library-list.component';
      BrowserModule,             // Browser support
     AppRoutingModule,          // Application routing
     HttpClientModule,          // HTTP communication with backend
-    FormsModule,               // Template-driven forms
-    TranslateModule.forRoot()  // Language translation support
-
+    FormsModule,      
+ 
+    // Template-driven forms
+    TranslateModule.forRoot( { // Language translation support
+   loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     {

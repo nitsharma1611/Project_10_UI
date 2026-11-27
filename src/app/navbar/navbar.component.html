@@ -1,4 +1,5 @@
 <!-- MAIN NAVBAR - LOGGED IN USER -->
+
 <div *ngIf="isLogin()"
      class="container-fluid py-3 shadow px-3 fixed-top"
      style="background: linear-gradient(135deg,#464f53,#012431,#024562);">
@@ -6,15 +7,19 @@
   <div class="d-flex flex-column flex-lg-row align-items-lg-center">
 
     <!-- USER INFO -->
+
     <h5 class="text-warning fw-bold mb-3 mb-lg-0 me-lg-4">
       Hi, {{form.data.fname}} ({{form.data.role}})
     </h5>
 
-    <!-- MENU -->
+    <!-- MAIN MENU -->
+
     <div class="d-flex flex-wrap align-items-center gap-2 flex-grow-1">
 
-      <!-- ACADEMICS -->
-      <div class="dropdown">
+      <!-- ================= ACADEMICS ================= -->
+
+      <div class="dropdown"
+           *ngIf="hasRole('Admin', 'College', 'Student', 'KIOSK')">
 
         <button class="btn btn-outline-light btn-sm dropdown-toggle"
                 data-bs-toggle="dropdown">
@@ -23,75 +28,87 @@
 
         <ul class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3">
 
-          <!-- College -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              College
-            </h6>
-          </li>
+          <!-- COLLEGE - ADMIN ONLY -->
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/college']">
-              {{ 'AddCollege' | translate }}
-            </a>
-          </li>
+          <ng-container *ngIf="hasRole('Admin')">
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/collegeList']">
-              {{ 'CollegeList' | translate }}
-            </a>
-          </li>
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                College
+              </h6>
+            </li>
 
-          <!-- Course -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              Course
-            </h6>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/college']">
+                {{ 'AddCollege' | translate }}
+              </a>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/course']">
-              {{ 'AddCourse' | translate }}
-            </a>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/collegeList']">
+                {{ 'CollegeList' | translate }}
+              </a>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/courseList']">
-              {{ 'CourseList' | translate }}
-            </a>
-          </li>
+          </ng-container>
 
-          <li>
-            <hr class="dropdown-divider border-secondary">
-          </li>
+          <!-- COURSE - ADMIN AND COLLEGE -->
 
-          <!-- Subject -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              Subject
-            </h6>
-          </li>
+          <ng-container *ngIf="hasRole('Admin', 'College')">
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/subject']">
-              {{ 'AddSubject' | translate }}
-            </a>
-          </li>
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                Course
+              </h6>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/subjectList']">
-              {{ 'SubjectList' | translate }}
-            </a>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/course']">
+                {{ 'AddCourse' | translate }}
+              </a>
+            </li>
 
-          <!-- Timetable -->
+            <li>
+              <a class="dropdown-item" [routerLink]="['/courseList']">
+                {{ 'CourseList' | translate }}
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider border-secondary">
+            </li>
+
+            <!-- SUBJECT -->
+
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                Subject
+              </h6>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/subject']">
+                {{ 'AddSubject' | translate }}
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/subjectList']">
+                {{ 'SubjectList' | translate }}
+              </a>
+            </li>
+
+          </ng-container>
+
+          <!-- TIMETABLE -->
+
           <li>
             <h6 class="dropdown-header text-uppercase text-info small">
               Timetable
             </h6>
           </li>
 
-          <li>
+          <li *ngIf="hasRole('Admin', 'College')">
             <a class="dropdown-item" [routerLink]="['/timetable']">
               {{ 'AddTimetable' | translate }}
             </a>
@@ -103,14 +120,15 @@
             </a>
           </li>
 
-          <!-- Marksheet -->
+          <!-- MARKSHEET -->
+
           <li>
             <h6 class="dropdown-header text-uppercase text-info small">
               Marksheet
             </h6>
           </li>
 
-          <li>
+          <li *ngIf="hasRole('Admin', 'College')">
             <a class="dropdown-item" [routerLink]="['/marksheetList']">
               {{ 'MarksheetList' | translate }}
             </a>
@@ -126,8 +144,10 @@
 
       </div>
 
-      <!-- PEOPLE -->
-      <div class="dropdown">
+      <!-- ================= PEOPLE ================= -->
+
+      <div class="dropdown"
+           *ngIf="hasRole('Admin', 'College', 'Student', 'KIOSK')">
 
         <button class="btn btn-outline-light btn-sm dropdown-toggle"
                 data-bs-toggle="dropdown">
@@ -136,14 +156,15 @@
 
         <ul class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3">
 
-          <!-- Marksheet -->
+          <!-- MARKSHEET -->
+
           <li>
             <h6 class="dropdown-header text-uppercase text-info small">
               Marksheet
             </h6>
           </li>
 
-          <li>
+          <li *ngIf="hasRole('Admin')">
             <a class="dropdown-item" [routerLink]="['/marksheet']">
               {{ 'AddMarksheet' | translate }}
             </a>
@@ -155,88 +176,102 @@
             </a>
           </li>
 
-          <!-- Student -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              Student
-            </h6>
-          </li>
+          <!-- STUDENT - ADMIN AND COLLEGE -->
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/student']">
-              {{ 'AddStudent' | translate }}
-            </a>
-          </li>
+          <ng-container *ngIf="hasRole('Admin', 'College')">
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/studentList']">
-              {{ 'StudentList' | translate }}
-            </a>
-          </li>
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                Student
+              </h6>
+            </li>
 
-          <!-- Faculty -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              Faculty
-            </h6>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/student']">
+                {{ 'AddStudent' | translate }}
+              </a>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/faculty']">
-              {{ 'AddFaculty' | translate }}
-            </a>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/studentList']">
+                {{ 'StudentList' | translate }}
+              </a>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/facultyList']">
-              {{ 'FacultyList' | translate }}
-            </a>
-          </li>
+            <!-- FACULTY -->
 
-          <!-- User -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              User
-            </h6>
-          </li>
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                Faculty
+              </h6>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/user']">
-              {{ 'AddUser' | translate }}
-            </a>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/faculty']">
+                {{ 'AddFaculty' | translate }}
+              </a>
+            </li>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/userList']">
-              {{ 'UserList' | translate }}
-            </a>
-          </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/facultyList']">
+                {{ 'FacultyList' | translate }}
+              </a>
+            </li>
 
-          <!-- Role -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              Role
-            </h6>
-          </li>
+          </ng-container>
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/role']">
-              {{ 'AddRole' | translate }}
-            </a>
-          </li>
+          <!-- USER - ADMIN ONLY -->
 
-          <li>
-            <a class="dropdown-item" [routerLink]="['/roleList']">
-              {{ 'RoleList' | translate }}
-            </a>
-          </li>
+          <ng-container *ngIf="hasRole('Admin')">
+
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                User
+              </h6>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/user']">
+                {{ 'AddUser' | translate }}
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/userList']">
+                {{ 'UserList' | translate }}
+              </a>
+            </li>
+
+            <!-- ROLE - ADMIN ONLY -->
+
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                Role
+              </h6>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/role']">
+                {{ 'AddRole' | translate }}
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/roleList']">
+                {{ 'RoleList' | translate }}
+              </a>
+            </li>
+
+          </ng-container>
 
         </ul>
 
       </div>
 
-      <!-- DAILY MODULES -->
-      <div class="dropdown">
+      <!-- ================= DAILY MODULES ================= -->
+
+      <div class="dropdown"
+           *ngIf="hasRole('Admin', 'College', 'Student')">
 
         <button class="btn btn-outline-light btn-sm dropdown-toggle"
                 data-bs-toggle="dropdown">
@@ -245,33 +280,39 @@
 
         <ul class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3">
 
-          <!-- Employee -->
-          <li>
-            <h6 class="dropdown-header text-uppercase text-info small">
-              Employee
-            </h6>
-          </li>
+          <!-- EMPLOYEE - ADMIN ONLY -->
+
+          <ng-container *ngIf="hasRole('Admin')">
+
+            <li>
+              <h6 class="dropdown-header text-uppercase text-info small">
+                Employee
+              </h6>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/employee']">
+                {{ 'AddEmployee' | translate }}
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/employeeList']">
+                {{ 'EmployeeList' | translate }}
+              </a>
+            </li>
+
+          </ng-container>
+
+          <!-- LIBRARY -->
 
           <li>
-            <a class="dropdown-item" [routerLink]="['/employee']">
-              {{ 'AddEmployee' | translate }}
-            </a>
-          </li>
-
-          <li>
-            <a class="dropdown-item" [routerLink]="['/employeeList']">
-              {{ 'EmployeeList' | translate }}
-            </a>
-          </li>
-
-
-  <li>
             <h6 class="dropdown-header text-uppercase text-info small">
               Library
             </h6>
           </li>
 
-          <li>
+          <li *ngIf="hasRole('Admin', 'College')">
             <a class="dropdown-item" [routerLink]="['/library']">
               {{ 'AddLibrary' | translate }}
             </a>
@@ -283,26 +324,43 @@
             </a>
           </li>
 
-
-
         </ul>
-
-
-
-
 
       </div>
 
-      <!-- HOME + PROFILE - RIGHT SIDE -->
-      <div class="d-flex align-items-center ms-auto gap-3">
+      <!-- ============ HOME + LANGUAGE + PROFILE ============ -->
+
+      <div class="d-flex align-items-center ms-auto gap-3 flex-wrap">
 
         <!-- HOME BUTTON -->
+
         <button class="btn btn-outline-light btn-sm"
                 [routerLink]="['/home']">
           Home
         </button>
 
+        <!-- LANGUAGE SELECTION - ALL ROLES -->
+
+        <select #lang
+                class="form-select form-select-sm w-auto"
+                (change)="changeLocale(lang.value)">
+
+          <option value="0">
+            {{ 'LocaleSelect.Select' | translate }}
+          </option>
+
+          <option value="en">
+            {{ 'LocaleSelect.English' | translate }}
+          </option>
+
+          <option value="hi">
+            {{ 'LocaleSelect.Hindi' | translate }}
+          </option>
+
+        </select>
+
         <!-- PROFILE DROPDOWN -->
+
         <div class="dropdown">
 
           <button type="button"
@@ -310,23 +368,26 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false">
 
-            <!-- User Profile Photo -->
-            <!-- Profile Photo -->
-<img [src]="form.data.id
-            ? 'http://localhost:8080/User/profilePic/' + form.data.id
-            : 'assets/files/default.jpg'"
-     (error)="setDefaultImage($event)"
-     class="rounded-circle border border-2"
-     width="38"
-     height="38"
-     style="object-fit: cover;"
-     alt="Profile">
+            <!-- PROFILE PHOTO -->
+
+            <img [src]="form.data.id
+                        ? 'http://localhost:8080/User/profilePic/' + form.data.id
+                        : 'assets/files/default.jpg'"
+                 (error)="setDefaultImage($event)"
+                 class="rounded-circle border border-2"
+                 width="38"
+                 height="38"
+                 style="object-fit: cover;"
+                 alt="Profile">
+
           </button>
 
           <!-- PROFILE DROPDOWN MENU -->
+
           <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow border-0 rounded-3 p-2">
 
             <!-- USER INFORMATION -->
+
             <li>
 
               <div class="d-flex align-items-center gap-3 p-2">
@@ -352,6 +413,7 @@
             </li>
 
             <!-- MY PROFILE -->
+
             <li>
 
               <a [routerLink]="['/myProfile']"
@@ -362,9 +424,11 @@
                 {{ 'MyProfile' | translate }}
 
               </a>
+
             </li>
 
             <!-- CHANGE PASSWORD -->
+
             <li>
 
               <a [routerLink]="['/changePassword']"
@@ -383,6 +447,7 @@
             </li>
 
             <!-- LOGOUT -->
+
             <li>
 
               <a (click)="logout()"
@@ -400,34 +465,64 @@
           </ul>
 
         </div>
+
         <!-- END PROFILE DROPDOWN -->
 
       </div>
-      <!-- END HOME + PROFILE -->
+
+      <!-- END HOME + LANGUAGE + PROFILE -->
 
     </div>
-    <!-- END MENU -->
+
+    <!-- END MAIN MENU -->
 
   </div>
 
 </div>
+
 <!-- END LOGGED-IN NAVBAR -->
 
 
-<!-- GUEST NAVBAR - NOT LOGGED IN -->
+<!-- ================= GUEST NAVBAR ================= -->
+
 <div *ngIf="!isLogin()"
-     class="container-fluid py-3 shadow fixed-top"
+     class="container-fluid py-3 shadow px-3 fixed-top"
      style="background: linear-gradient(135deg,#464f53,#012431,#024562);">
 
-  <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+    <!-- GUEST INFORMATION -->
 
     <h5 class="text-warning fw-bold mb-0">
       {{ 'Hi,Guest' | translate }}
     </h5>
 
-    <div class="d-flex gap-2">
+    <!-- RIGHT SIDE MENU -->
+
+    <div class="d-flex align-items-center ms-auto gap-2 flex-wrap">
+
+      <!-- LANGUAGE SELECTION -->
+
+      <select #locale
+              class="form-select form-select-sm w-auto"
+              (change)="changeLocale(locale.value)">
+
+        <option value="0">
+          {{ 'LocaleSelect.Select' | translate }}
+        </option>
+
+        <option value="en">
+          {{ 'LocaleSelect.English' | translate }}
+        </option>
+
+        <option value="hi">
+          {{ 'LocaleSelect.Hindi' | translate }}
+        </option>
+
+      </select>
 
       <!-- LOGIN -->
+
       <a [routerLink]="['/login']"
          class="btn btn-success btn-sm">
 
@@ -436,6 +531,7 @@
       </a>
 
       <!-- SIGNUP -->
+
       <a [routerLink]="['/signup']"
          class="btn btn-primary btn-sm">
 
@@ -445,7 +541,10 @@
 
     </div>
 
+    <!-- END RIGHT SIDE MENU -->
+
   </div>
 
 </div>
+
 <!-- END GUEST NAVBAR -->

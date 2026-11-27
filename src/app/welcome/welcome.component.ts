@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,30 +12,41 @@ export class WelcomeComponent implements OnInit {
   lname: any;
   userId: any;
 
-
-
+  // Login Status
   isLoggedIn: boolean = false;
+
+  // User Roles
   isAdmin: boolean = false;
   isStudent: boolean = false;
+  isCollege: boolean = false;
+  isKiosk: boolean = false;
 
   ngOnInit(): void {
+
+
+
 
     // Get Login Details From Local Storage
 
     this.loginId = localStorage.getItem("loginId");
     this.role = localStorage.getItem("role");
-   
+
+
+ this.userId = localStorage.getItem('userId');
 
     // Check Login Status
 
     this.isLoggedIn = this.loginId != null;
 
-   
+    // Check User Roles
 
-    // Check User Role
+    this.isAdmin = this.isLoggedIn && this.role === 'Admin';
 
-    this.isAdmin = this.role === 'Admin';
-    this.isStudent = this.role === 'Student';
+    this.isStudent = this.isLoggedIn && this.role === 'Student';
+
+    this.isCollege = this.isLoggedIn && this.role === 'College';
+
+    this.isKiosk = this.isLoggedIn && this.role === 'KIOSK';
 
   }
 

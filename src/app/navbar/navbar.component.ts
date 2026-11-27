@@ -52,7 +52,17 @@ setDefaultImage(event: Event): void {
 
   }
 }
+hasRole(...roles: string[]): boolean {
 
+  const currentRole = String(
+    this.form?.data?.role ?? ''
+  ).trim().toLowerCase();
+
+  return roles.some(
+    role => role.toLowerCase() === currentRole
+  );
+
+}
    logout() { 
     var _self = this;
     this.httpService.get(this.endpoint + 'logout', function (res: any) {
