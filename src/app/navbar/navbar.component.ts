@@ -48,7 +48,7 @@ setDefaultImage(event: Event): void {
 
   if (!img.src.endsWith('/assets/files/default.jpg')) {
 
-    img.src = 'assets/files/default.jpg';
+    img.src = 'assets/images/default.jpg';
 
   }
 }

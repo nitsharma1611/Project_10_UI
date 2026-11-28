@@ -271,7 +271,7 @@
       <!-- ================= DAILY MODULES ================= -->
 
       <div class="dropdown"
-           *ngIf="hasRole('Admin', 'College', 'Student')">
+           *ngIf="hasRole('Admin')">
 
         <button class="btn btn-outline-light btn-sm dropdown-toggle"
                 data-bs-toggle="dropdown">
@@ -312,7 +312,7 @@
             </h6>
           </li>
 
-          <li *ngIf="hasRole('Admin', 'College')">
+          <li *ngIf="hasRole('Admin')">
             <a class="dropdown-item" [routerLink]="['/library']">
               {{ 'AddLibrary' | translate }}
             </a>

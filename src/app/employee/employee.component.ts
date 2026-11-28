@@ -25,7 +25,7 @@ override ngOnInit(): void {
     // Joining Date range
     let range = this.daterangeService.getJoiningDateRange();
 
-    this.minJoiningDate = range.min;
+    this.minJoiningDate = range.min;;'l'
     this.maxJoiningDate = range.max;
 
   }
